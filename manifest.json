@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "X Mass Unfollow Elite",
+  "version": "4.2.0",
+  "description": "Controlled X/Twitter unfollow manager with delay, limits, cooldown, pause/resume, and contact support.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*"
+  ],
+  "action": {
+    "default_title": "X Mass Unfollow Elite",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "short_name": "X Unfollow",
+  "author": "Shahriar Ahmed"
+}

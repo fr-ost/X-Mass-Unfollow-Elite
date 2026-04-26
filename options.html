@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>X Mass Unfollow Elite Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <img src="icon48.png" class="icon">
+      <div>
+        <h1>Elite Settings</h1>
+        <p>Control speed, limits, cooldowns, and session behavior.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Session Controls</h2>
+      <div class="grid">
+        <label><span>Minimum delay seconds</span><input id="minDelay" type="number" min="5" max="600"></label>
+        <label><span>Maximum delay seconds</span><input id="maxDelay" type="number" min="5" max="600"></label>
+        <label><span>Max unfollow per session</span><input id="maxActions" type="number" min="1" max="1000"></label>
+        <label><span>Cooldown after actions</span><input id="cooldownAfter" type="number" min="1" max="100"></label>
+        <label><span>Cooldown duration minutes</span><input id="cooldownMinutes" type="number" min="1" max="120"></label>
+        <label><span>Scroll wait seconds</span><input id="scrollWait" type="number" min="1" max="30"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Pause / Resume</h2>
+      <p>Pause and resume controls are available directly from the extension popup while a session is running.</p>
+    </section>
+
+    <section class="card">
+      <h2>Behavior</h2>
+      <label class="check"><input id="skipVerified" type="checkbox"><span>Skip verified accounts</span></label>
+      <label class="check"><input id="skipProtected" type="checkbox"><span>Skip protected/private-looking accounts</span></label>
+      <label class="check"><input id="reloadOnStop" type="checkbox"><span>Reload page after stop</span></label>
+    </section>
+
+    <section class="card contact-card">
+      <h2>Contact Me</h2>
+      <p>Need help, update, or custom version?</p>
+      <a class="contact-btn" href="https://t.me/igfrostt" target="_blank">Contact on Telegram: @igfrostt</a>
+    </section>
+
+    <button id="save">Save Settings</button>
+    <div id="status"></div>
+
+    <footer>
+      Developed by <b>Shahriar Ahmed</b> · Telegram:
+      <a href="https://t.me/igfrostt" target="_blank"><b>@igfrostt</b></a>
+    </footer>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
