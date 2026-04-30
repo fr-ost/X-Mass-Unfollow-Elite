@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "X Mass Unfollow Elite",
   "version": "5.0.0",
-  "description": "Controlled X/Twitter unfollow manager with smart filters, background-safe timer, analytics, CSV export, profile greeting and live badge.",
+  "description": "Controlled X unfollow manager with smart filters, background-safe timer, analytics, CSV export, profile greeting and live badge.",
   "permissions": [
     "activeTab",
     "tabs",
