@@ -1,18 +1,24 @@
 {
   "manifest_version": 3,
   "name": "X Mass Unfollow Elite",
-  "version": "4.2.0",
-  "description": "Controlled X/Twitter unfollow manager with delay, limits, cooldown, pause/resume, and contact support.",
+  "version": "5.0.0",
+  "description": "Controlled X/Twitter unfollow manager with smart filters, background-safe timer, analytics, CSV export, profile greeting and live badge.",
   "permissions": [
     "activeTab",
-    "storage"
+    "tabs",
+    "storage",
+    "alarms",
+    "offscreen"
   ],
   "host_permissions": [
-    "https://twitter.com/*",
-    "https://x.com/*"
+    "https://x.com/*",
+    "https://twitter.com/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_title": "X Mass Unfollow Elite",
+    "default_title": "X Unfollow Manager Pro",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon16.png",
@@ -38,7 +44,11 @@
       "run_at": "document_idle"
     }
   ],
-  "options_page": "options.html",
-  "short_name": "X Unfollow",
-  "author": "Shahriar Ahmed"
+  "web_accessible_resources": [
+    {
+      "resources": ["offscreen.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "options_page": "options.html"
 }
