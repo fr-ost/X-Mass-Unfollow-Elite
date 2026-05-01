@@ -1,55 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>X Mass Unfollow Elite</title>
+  <title>Unfollow Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <img src="icon48.png" class="icon">
-      <div>
-        <h1>X Unfollow Elite</h1>
-        <p>Controlled session manager</p>
+  <main class="app">
+
+    <!-- Masthead: newspaper style -->
+    <header class="masthead">
+      <div class="mast-left">
+        <div class="logo">
+          <span class="logo-mark">U</span>
+        </div>
+        <div class="mast-title">
+          <h1>Unfollow<em>Manager</em></h1>
+          <p class="kicker">Vol. V · Edition 2026 · For X.com</p>
+        </div>
+      </div>
+      <div class="mast-right">
+        <span class="status-pill" id="statusPill">
+          <span id="dot" class="dot"></span>
+          <span id="statusText">Ready</span>
+        </span>
       </div>
     </header>
 
-    <section class="stats">
-      <div class="stat">
-        <b id="count">0</b>
-        <span>Unfollowed</span>
-      </div>
-      <div class="stat">
-        <b id="scanned">0</b>
-        <span>Scanned</span>
+    <hr class="rule rule-thick">
+    <hr class="rule rule-thin">
+
+    <!-- Profile strip -->
+    <section class="profile-strip">
+      <img id="profileAvatar" class="avatar" alt="" />
+      <div class="profile-text">
+        <span id="greetingText" class="greeting">Welcome back</span>
+        <b id="profileName">X User</b>
+        <small id="profileHandle">Open X to detect profile</small>
       </div>
     </section>
 
-    <section class="panel">
-      <div class="status">
-        <i id="dot"></i>
-        <span id="statusText">Ready</span>
+    <!-- Hero counter — the unfollow count is the headline -->
+    <section class="hero">
+      <div class="hero-num">
+        <span class="big-num" id="count">0</span>
+        <span class="big-label">unfollowed</span>
       </div>
-      <div class="mode" id="modeText">Mode: Idle</div>
+      <div class="hero-meta">
+        <div class="meta-row">
+          <span class="meta-label">Mode</span>
+          <b id="modeText">Idle</b>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Rate</span>
+          <b><span id="rate">0.0</span><em>/min</em></b>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Elapsed</span>
+          <b id="elapsed">00:00</b>
+        </div>
+      </div>
     </section>
 
-    <section class="actions">
-      <button id="nonFollowers" class="primary">Unfollow Non Followers</button>
-      <button id="all" class="secondary">Unfollow All</button>
-      <div class="two">
-        <button id="pause" class="ghost">Pause</button>
-        <button id="resume" class="ghost">Resume</button>
+    <!-- Timer -->
+    <section class="timer">
+      <div class="timer-head">
+        <span id="timerLabel">Timer</span>
+        <b id="timerText">—</b>
       </div>
-      <button id="stop" class="danger">Stop</button>
-      <button id="settings" class="settings">Settings</button>
-      <button id="contact" class="settings">Contact Me: @igfrostt</button>
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
     </section>
 
-    <footer>
-      Developed by <b>Shahriar Ahmed</b><br>
-      Telegram: <b>@igfrostt</b>
+    <!-- Primary actions -->
+    <section class="actions-primary">
+      <button id="nonFollowers" class="btn btn-primary">
+        <span>Unfollow Non-Followers</span>
+        <span class="arrow">→</span>
+      </button>
+      <button id="all" class="btn btn-outline">Unfollow All</button>
+    </section>
+
+    <!-- Control row -->
+    <section class="actions-grid">
+      <button id="pause"  class="btn btn-quiet">Pause</button>
+      <button id="resume" class="btn btn-quiet">Resume</button>
+      <button id="stop"   class="btn btn-stop">Stop</button>
+    </section>
+
+    <!-- Analytics chart -->
+    <section class="chart-block">
+      <div class="chart-head">
+        <span class="chart-eyebrow">Session Analytics</span>
+        <b id="chartLabel">0 unfollows</b>
+      </div>
+      <canvas id="sessionChart" width="310" height="120"></canvas>
+      <div class="chart-stats">
+        <div><b id="chartTotal">0</b><span>Total</span></div>
+        <div><b id="chartPeak">0.0</b><span>Peak/min</span></div>
+        <div><b id="chartDuration">00:00</b><span>Duration</span></div>
+      </div>
+    </section>
+
+    <!-- Database -->
+    <section class="db-block">
+      <div class="db-num">
+        <b id="dbCount">0</b>
+        <span>profiles archived</span>
+      </div>
+      <div class="db-actions">
+        <button id="exportCsv" class="btn btn-mini">Export CSV</button>
+        <button id="clearDb"   class="btn btn-mini btn-mini-danger">Clear</button>
+      </div>
+    </section>
+
+    <!-- Footer actions -->
+    <section class="actions-foot">
+      <button id="settings" class="btn btn-text">Settings</button>
+      <button id="contact"  class="btn btn-text">Contact @igfrostt</button>
+    </section>
+
+    <footer class="colophon">
+      <span>Live badge enabled</span>
+      <span>·</span>
+      <span>Designed by <b>Shahriar Ahmed</b></span>
     </footer>
+
   </main>
   <script src="popup.js"></script>
 </body>
