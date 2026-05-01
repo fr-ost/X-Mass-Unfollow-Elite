@@ -1,8 +1,419 @@
-:root{--bg:#071019;--card:#101a24;--text:#eef6ff;--muted:#8aa0b5;--blue:#1d9bf0;--border:rgba(255,255,255,.10)}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at top left,rgba(29,155,240,.28),transparent 34%),linear-gradient(135deg,#071019,#0d1621 55%,#05080d);color:var(--text)}.wrap{max-width:900px;margin:0 auto;padding:34px 18px}header{display:flex;gap:14px;align-items:center;margin-bottom:22px}.icon{width:54px;height:54px;border-radius:16px}h1{margin:0 0 4px;font-size:30px}h2{margin:0 0 14px;font-size:18px}p{margin:0;color:var(--muted);font-size:13px}.card{background:rgba(16,26,36,.86);border:1px solid var(--border);border-radius:22px;padding:20px;margin:16px 0;box-shadow:0 18px 45px rgba(0,0,0,.22)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label span{display:block;margin-bottom:8px;color:#cfe1f2;font-size:13px;font-weight:750}input,textarea{width:100%;border:1px solid var(--border);outline:none;border-radius:14px;padding:12px 13px;background:#0c141d;color:var(--text);font-size:14px}input:focus,textarea:focus{border-color:rgba(29,155,240,.65);box-shadow:0 0 0 4px rgba(29,155,240,.12)}textarea{min-height:130px;resize:vertical;margin-top:12px}.check{display:flex;align-items:center;gap:10px;margin:10px 0}.check input{width:18px;height:18px}.check span{margin:0}button{width:100%;border:0;border-radius:16px;padding:14px 18px;color:white;background:linear-gradient(135deg,#1d9bf0,#2563eb);font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 16px 34px rgba(29,155,240,.2)}#status{height:22px;margin-top:12px;text-align:center;color:#00ba7c;font-weight:800}footer{margin-top:24px;text-align:center;color:var(--muted);font-size:12px}@media(max-width:680px){.grid{grid-template-columns:1fr}}
+/* ============================================================
+   X Unfollow Manager — Settings (Editorial Light Theme)
+   ============================================================ */
 
-a{color:#8ecdf8;text-decoration:none}
-a:hover{text-decoration:underline}
-.contact-card{display:flex;flex-direction:column;gap:10px}
-.contact-btn{display:inline-block;text-align:center;border-radius:14px;padding:12px 14px;background:linear-gradient(135deg,#229ed9,#1d9bf0);color:white!important;font-weight:900;text-decoration:none}
-.contact-btn:hover{filter:brightness(1.06);text-decoration:none}
+:root {
+  --paper:        #f6f1e8;
+  --paper-2:      #efe7d8;
+  --paper-edge:   #e3d8c2;
+  --paper-deep:   #ebe2d0;
+  --ink:          #14110d;
+  --ink-soft:     #3a342b;
+  --muted:        #7d7466;
+  --hairline:     rgba(20, 17, 13, 0.16);
+  --hairline-2:   rgba(20, 17, 13, 0.08);
+  --accent:       #c8312c;
+  --accent-deep:  #9c2420;
+  --ok:           #2f6b3c;
+  --shadow-card:  0 1px 0 rgba(20,17,13,.06);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.55;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(200,49,44,.04), transparent 35%),
+    radial-gradient(circle at 95% 95%, rgba(20,17,13,.05), transparent 40%);
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+/* =========================
+   MASTHEAD
+   ========================= */
+.masthead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 14px;
+}
+.mast-left { display: flex; align-items: center; gap: 16px; }
+
+.logo {
+  width: 56px; height: 56px;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  display: grid; place-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.logo::after {
+  content: "";
+  position: absolute; top: -5px; right: -5px;
+  width: 11px; height: 11px;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+}
+.logo-mark {
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--paper);
+  font-style: italic;
+  line-height: 1;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-size: 38px;
+  letter-spacing: -1.2px;
+  line-height: 0.95;
+  color: var(--ink);
+}
+.masthead h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.masthead .kicker {
+  margin: 6px 0 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.edition {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--ink);
+  padding: 5px 10px;
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.rule { border: 0; margin: 0; }
+.rule-thick { height: 3px; background: var(--ink); }
+.rule-thin  { height: 1px; background: var(--ink); margin-top: 2px; }
+
+/* =========================
+   CARDS
+   ========================= */
+.card {
+  margin: 28px 0;
+  padding: 28px 26px 24px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--ink);
+}
+
+.card-head {
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px dotted var(--hairline);
+  position: relative;
+  padding-left: 56px;
+  min-height: 56px;
+}
+.section-num {
+  position: absolute;
+  left: 0; top: -4px;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 44px;
+  letter-spacing: -2px;
+  color: var(--accent);
+  line-height: 1;
+}
+.card-head h2 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  color: var(--ink);
+}
+.card-head p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* =========================
+   FORMS
+   ========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 22px;
+}
+
+label {
+  display: block;
+}
+label > span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+label > span em {
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 400;
+}
+
+input[type=number],
+input[type=text] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid var(--ink);
+  outline: 0;
+  background: transparent;
+  padding: 8px 2px;
+  font-family: "Fraunces", serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  transition: border-color .15s ease;
+}
+input[type=number]:focus,
+input[type=text]:focus {
+  border-color: var(--accent);
+}
+input::placeholder {
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 400;
+}
+.hint {
+  display: block;
+  margin-top: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+
+/* =========================
+   TOGGLES — custom switches
+   ========================= */
+.toggle {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: start;
+  gap: 14px;
+  padding: 14px 4px;
+  border-bottom: 1px dotted var(--hairline);
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.toggle:last-of-type { border-bottom: 0; }
+.toggle:hover { background: rgba(200,49,44,.025); }
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+
+.track {
+  display: inline-block;
+  width: 40px; height: 22px;
+  background: var(--paper-edge);
+  border: 1.5px solid var(--ink);
+  position: relative;
+  transition: background .2s ease;
+  margin-top: 2px;
+}
+.thumb {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 14px; height: 14px;
+  background: var(--ink);
+  transition: left .2s cubic-bezier(.5,0,.2,1), background .2s ease;
+}
+.toggle input:checked ~ .track {
+  background: var(--ink);
+}
+.toggle input:checked ~ .track .thumb {
+  left: 21px;
+  background: var(--accent);
+}
+
+.toggle .text b {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  letter-spacing: -0.2px;
+}
+.toggle .text small {
+  display: block;
+  margin-top: 3px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* =========================
+   CONTACT CARD
+   ========================= */
+.card-contact .contact-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 18px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: transform .12s ease;
+  position: relative;
+}
+.card-contact .contact-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+.contact-eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(246,241,232,.6);
+}
+.contact-handle {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+}
+.contact-arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  font-family: "Fraunces", serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* =========================
+   SAVE BAR
+   ========================= */
+.save-bar {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 3px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+  padding: 14px 28px;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.save-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.save-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.save-arrow {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.save-status {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ok);
+  font-weight: 700;
+  min-height: 16px;
+  transition: opacity .25s ease;
+}
+
+/* =========================
+   COLOPHON
+   ========================= */
+.colophon {
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.colophon b { color: var(--ink); font-weight: 700; }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 640px) {
+  .wrap { padding: 32px 18px 60px; }
+  .masthead { flex-direction: column; align-items: flex-start; }
+  .masthead h1 { font-size: 30px; }
+  .grid { grid-template-columns: 1fr; }
+  .save-bar { flex-direction: column; align-items: stretch; }
+  .save-btn { justify-content: center; }
+}
