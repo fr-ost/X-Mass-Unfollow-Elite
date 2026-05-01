@@ -1,58 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>X Mass Unfollow Elite Settings</title>
+  <title>Settings — Unfollow Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="options.css">
 </head>
 <body>
   <main class="wrap">
-    <header>
-      <img src="icon48.png" class="icon">
-      <div>
-        <h1>Elite Settings</h1>
-        <p>Control speed, limits, cooldowns, and session behavior.</p>
+
+    <!-- Masthead -->
+    <header class="masthead">
+      <div class="mast-left">
+        <div class="logo"><span class="logo-mark">U</span></div>
+        <div>
+          <h1>Settings <em>&amp;</em> Preferences</h1>
+          <p class="kicker">Configure speed · limits · filters · cleanup</p>
+        </div>
       </div>
+      <span class="edition">v5.0 · Editorial Edition</span>
     </header>
 
+    <hr class="rule rule-thick">
+    <hr class="rule rule-thin">
+
+    <!-- SESSION CONTROLS -->
     <section class="card">
-      <h2>Session Controls</h2>
+      <header class="card-head">
+        <span class="section-num">01</span>
+        <h2>Session Controls</h2>
+        <p>Throttle how aggressively the script acts. Higher delays mean safer sessions.</p>
+      </header>
       <div class="grid">
-        <label><span>Minimum delay seconds</span><input id="minDelay" type="number" min="5" max="600"></label>
-        <label><span>Maximum delay seconds</span><input id="maxDelay" type="number" min="5" max="600"></label>
-        <label><span>Max unfollow per session</span><input id="maxActions" type="number" min="1" max="1000"></label>
-        <label><span>Cooldown after actions</span><input id="cooldownAfter" type="number" min="1" max="100"></label>
-        <label><span>Cooldown duration minutes</span><input id="cooldownMinutes" type="number" min="1" max="120"></label>
-        <label><span>Scroll wait seconds</span><input id="scrollWait" type="number" min="1" max="30"></label>
+        <label>
+          <span>Minimum delay <em>(seconds)</em></span>
+          <input id="minDelay" type="number" min="5" max="600">
+        </label>
+        <label>
+          <span>Maximum delay <em>(seconds)</em></span>
+          <input id="maxDelay" type="number" min="5" max="600">
+        </label>
+        <label>
+          <span>Max unfollows per session</span>
+          <input id="maxActions" type="number" min="1" max="1000">
+        </label>
+        <label>
+          <span>Cooldown after <em>N</em> actions</span>
+          <input id="cooldownAfter" type="number" min="1" max="100">
+        </label>
+        <label>
+          <span>Cooldown duration <em>(minutes)</em></span>
+          <input id="cooldownMinutes" type="number" min="1" max="120">
+        </label>
+        <label>
+          <span>Scroll wait <em>(seconds)</em></span>
+          <input id="scrollWait" type="number" min="1" max="30">
+        </label>
       </div>
     </section>
 
+    <!-- PROTECTION FILTERS -->
     <section class="card">
-      <h2>Pause / Resume</h2>
-      <p>Pause and resume controls are available directly from the extension popup while a session is running.</p>
+      <header class="card-head">
+        <span class="section-num">02</span>
+        <h2>Protection Filters</h2>
+        <p>Whitelist accounts that should never be unfollowed.</p>
+      </header>
+
+      <label class="toggle">
+        <input id="skipVerified" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Skip verified accounts</b>
+          <small>Protects blue-check / verified users from being unfollowed.</small>
+        </span>
+      </label>
+
+      <label class="toggle">
+        <input id="skipProtected" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Skip protected / private accounts</b>
+          <small>Avoid accounts marked as protected.</small>
+        </span>
+      </label>
+
+      <label class="toggle">
+        <input id="skipFollowsMe" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Skip people who follow me</b>
+          <small>Preserve mutual / follow-back relationships.</small>
+        </span>
+      </label>
+
+      <label class="toggle">
+        <input id="reloadOnStop" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Reload page on stop</b>
+          <small>Refresh the X tab when the session ends.</small>
+        </span>
+      </label>
+
+      <label class="toggle">
+        <input id="soundEnabled" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Sound alert</b>
+          <small>Soft beep after each successful unfollow.</small>
+        </span>
+      </label>
     </section>
 
+    <!-- SMART CLEANUP -->
     <section class="card">
-      <h2>Behavior</h2>
-      <label class="check"><input id="skipVerified" type="checkbox"><span>Skip verified accounts</span></label>
-      <label class="check"><input id="skipProtected" type="checkbox"><span>Skip protected/private-looking accounts</span></label>
-      <label class="check"><input id="reloadOnStop" type="checkbox"><span>Reload page after stop</span></label>
+      <header class="card-head">
+        <span class="section-num">03</span>
+        <h2>Smart Cleanup</h2>
+        <p>Quality-score each account; only unfollow likely low-value or spam-like profiles.</p>
+      </header>
+
+      <label class="toggle">
+        <input id="smartSelection" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Smart low-quality selection</b>
+          <small>Score each row and only unfollow if it crosses the threshold.</small>
+        </span>
+      </label>
+
+      <label>
+        <span>Cleanup strictness <em>(1 – 100)</em></span>
+        <input id="cleanupThreshold" type="number" min="1" max="100" value="55">
+        <small class="hint">Higher = stricter (fewer accounts unfollowed). 55 is a balanced default.</small>
+      </label>
     </section>
 
-    <section class="card contact-card">
-      <h2>Contact Me</h2>
-      <p>Need help, update, or custom version?</p>
-      <a class="contact-btn" href="https://t.me/igfrostt" target="_blank">Contact on Telegram: @igfrostt</a>
+    <!-- KEYWORD PROTECTION -->
+    <section class="card">
+      <header class="card-head">
+        <span class="section-num">04</span>
+        <h2>Keyword Protection</h2>
+        <p>Manually shield accounts whose bio or name contains certain words.</p>
+      </header>
+
+      <label class="toggle">
+        <input id="keywordProtection" type="checkbox">
+        <span class="track"><span class="thumb"></span></span>
+        <span class="text">
+          <b>Protect keyword accounts</b>
+          <small>Skip accounts whose row text contains any of the keywords below.</small>
+        </span>
+      </label>
+
+      <label>
+        <span>Protected keywords <em>(comma-separated)</em></span>
+        <input id="protectedKeywords" type="text" placeholder="project, team, partner, founder, exchange">
+      </label>
     </section>
 
-    <button id="save">Save Settings</button>
-    <div id="status"></div>
+    <!-- CONTACT -->
+    <section class="card card-contact">
+      <header class="card-head">
+        <span class="section-num">05</span>
+        <h2>Contact &amp; Support</h2>
+        <p>Issues? Suggestions? Reach the developer.</p>
+      </header>
+      <a class="contact-link" href="https://t.me/igfrostt" target="_blank" rel="noopener">
+        <span class="contact-eyebrow">Direct line</span>
+        <span class="contact-handle">Telegram · @igfrostt</span>
+        <span class="contact-arrow">→</span>
+      </a>
+    </section>
 
-    <footer>
-      Developed by <b>Shahriar Ahmed</b> · Telegram:
-      <a href="https://t.me/igfrostt" target="_blank"><b>@igfrostt</b></a>
+    <!-- SAVE BAR -->
+    <div class="save-bar">
+      <button id="save" class="save-btn">
+        <span>Save Settings</span>
+        <span class="save-arrow">→</span>
+      </button>
+      <div id="status" class="save-status"></div>
+    </div>
+
+    <footer class="colophon">
+      <span>X Unfollow Manager Pro</span>
+      <span>·</span>
+      <span>Designed by <b>Shahriar Ahmed</b></span>
     </footer>
   </main>
+
   <script src="options.js"></script>
 </body>
 </html>
